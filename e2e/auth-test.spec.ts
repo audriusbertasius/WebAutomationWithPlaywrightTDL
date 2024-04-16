@@ -1,14 +1,9 @@
-import { test, expect } from "@playwright/test";
-import SignupLoginPage from "../page-objects/SignupLoginPage";
-import HomePage from "../page-objects/HomePage";
+import test from "../fixtures/pages";
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe("Successful auth tests", async () => {
-  test("Sign in as standard user", async ({ page }) => {
-    const signupLoginPage = new SignupLoginPage(page);
-    const homePage = new HomePage(page);
-
+  test("Sign in as standard user", async ({ signupLoginPage, homePage }) => {
     await signupLoginPage.navigateToPage("/login");
     await signupLoginPage.inputLoginData(
       "audrius.bertasius@testdevlab.com",
@@ -20,14 +15,13 @@ test.describe("Successful auth tests", async () => {
 });
 
 test.describe("Unsuccessful auth tests", async () => {
-  test.beforeEach(async ({ page }) => {
-    const signupLoginPage = new SignupLoginPage(page);
+  test.beforeEach(async ({ signupLoginPage, homePage }) => {
     await signupLoginPage.navigateToPage("/login");
   });
-  test("Sign in with incorect user data", async ({ page }) => {
-    const signupLoginPage = new SignupLoginPage(page);
-    const homePage = new HomePage(page);
-
+  test("Sign in with incorect user data", async ({
+    signupLoginPage,
+    homePage,
+  }) => {
     await signupLoginPage.inputLoginData(
       "audrius.bertasius@testdevlab.com",
       "IncorrectPass"

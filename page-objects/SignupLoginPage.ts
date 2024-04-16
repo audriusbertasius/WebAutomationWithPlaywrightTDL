@@ -24,6 +24,6 @@ export default class SignupLoginPage extends BasePage {
   }
 
   async assertErrorMessageText(messageText: string) {
-    expect(this.page.getByText(messageText)).toBeVisible();
+    await expect(this.page.getByText(messageText)).toBeVisible();
   }
 }
