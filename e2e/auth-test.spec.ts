@@ -15,13 +15,10 @@ test.describe("Successful auth tests", async () => {
 });
 
 test.describe("Unsuccessful auth tests", async () => {
-  test.beforeEach(async ({ signupLoginPage, homePage }) => {
+  test.beforeEach(async ({ signupLoginPage }) => {
     await signupLoginPage.navigateToPage("/login");
   });
-  test("Sign in with incorect user data", async ({
-    signupLoginPage,
-    homePage,
-  }) => {
+  test("Sign in with incorect user data", async ({ signupLoginPage }) => {
     await signupLoginPage.inputLoginData(
       "audrius.bertasius@testdevlab.com",
       "IncorrectPass"
