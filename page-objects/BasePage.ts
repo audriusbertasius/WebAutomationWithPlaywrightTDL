@@ -21,4 +21,8 @@ export default class ProductsPage {
   async clickButton(selector: Locator) {
     await selector.click();
   }
+
+  async verifyIsVisible(selector: Locator) {
+    await selector.isVisible();
+  }
 }

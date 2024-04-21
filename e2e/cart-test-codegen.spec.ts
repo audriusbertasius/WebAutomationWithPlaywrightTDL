@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.use({ storageState: { cookies: [], origins: [] } });
-test('test', async ({ page }) => {
+test('Codegen test: Add item to cart and assert that the correct item with the correct price is shown in the cart.', async ({ page }) => {
   await page.goto('https://automationexercise.com/');
   await page.getByRole('link', { name: ' Signup / Login' }).click();
   await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').click();
@@ -26,6 +26,7 @@ test('test', async ({ page }) => {
   await expect(page.locator('tbody')).toContainText('Rs. 400');
   await page.getByRole('link', { name: 'Place Order' }).click();
 
+  //Go through the checkout flow and make a successful purchase'
   await expect(page.getByRole('heading', { name: 'Payment' })).toBeVisible();
   await page.locator('input[name="name_on_card"]').click();
   await page.locator('input[name="name_on_card"]').fill('Audrius Ber');
