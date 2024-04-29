@@ -38,10 +38,6 @@ export default class CartPage extends BasePage {
     await this.verifyIsVisible(this.menThirtsProductHeading);
   }
 
-  //   async addToCartByProductname(string: productName) {
-  //     await this.addToCartByproductName(productName).click;
-  //   }
-
   async addToCartByProductName() {
     await this.clickButton(this.addToCartByproductName);
   }

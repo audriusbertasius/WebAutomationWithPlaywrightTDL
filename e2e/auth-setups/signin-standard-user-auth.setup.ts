@@ -1,4 +1,4 @@
-import { test as setup } from "@playwright/test";
+import { expect, test as setup } from "@playwright/test";
 import SignupLoginPage from "../../page-objects/SignupLoginPage";
 import HomePage from "../../page-objects/HomePage";
 
@@ -14,6 +14,7 @@ setup("Sign in as standard user", async ({ page }) => {
     "P@ssWord"
   );
   await signupLoginPage.clickLoginButton();
+  await expect(page.getByText("Logged in as Audrius")).toBeVisible();
   await homePage.assertPageUrl("/");
 
   await page.context().storageState({ path: authFile });

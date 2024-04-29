@@ -6,6 +6,7 @@ export default class CartPage extends BasePage {
   readonly productNames: Locator;
   readonly cartPrice: Locator;
   readonly cartTotalPrice: Locator;
+  readonly proceedToCheckout: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -13,6 +14,7 @@ export default class CartPage extends BasePage {
     this.productNames = this.page.locator('td.cart_description>>h4>>a');
     this.cartPrice = this.page.locator('td.cart_price>>p');
     this.cartTotalPrice = this.page.locator('td.cart_total>>p');
+    this.proceedToCheckout = this.page.getByText('Proceed To Checkout')
   }
 
   async verifyProductNameInChart(productName: string) {
@@ -25,5 +27,9 @@ export default class CartPage extends BasePage {
 
   async verifyProductTotalPrice(productTotalPrice: string) {
     await expect(this.cartTotalPrice).toContainText(productTotalPrice);
+  }
+
+  async proceedToCheckOut() {
+    await this.clickButton(this.proceedToCheckout);
   }
 }
