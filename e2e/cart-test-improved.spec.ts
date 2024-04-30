@@ -17,6 +17,7 @@ test.describe("Cart add in and checkout flow with a successful purchase", async 
   }) => {
 
     await productsPage.navigateToPage("/products");
+    await productsPage.handleConsentPopup();
     await productsPage.selectMenCategory();
     await productsPage.filterProductsByTshirts();
     await productsPage.verifyMenTshirtsProductCategoryHeading();
