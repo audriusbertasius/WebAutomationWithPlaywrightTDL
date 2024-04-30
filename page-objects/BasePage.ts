@@ -25,4 +25,13 @@ export default class ProductsPage {
   async verifyIsVisible(selector: Locator) {
     await selector.isVisible();
   }
+  
+  async handleConsentPopup() {
+    await this.page.addLocatorHandler(
+      this.page.getByText("This site asks for consent to use your data"),
+      async () => {
+        await this.page.locator("//button[@class='fc-button fc-cta-consent fc-primary-button']").click();
+      }
+    )
+  }
 }

@@ -5,6 +5,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 test.describe("Successful auth tests", async () => {
   test("Sign in as standard user", async ({ signupLoginPage, homePage }) => {
     await signupLoginPage.navigateToPage("/login");
+    await signupLoginPage.handleConsentPopup();
     await signupLoginPage.inputLoginData(
       "audrius.bertasius@testdevlab.com",
       "P@ssWord"

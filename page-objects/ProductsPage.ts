@@ -18,8 +18,8 @@ export default class CartPage extends BasePage {
     });
     this.menCategory = this.page.getByRole("link", { name: " Men" });
     this.filterTshirts = this.page.getByRole("link", { name: "Tshirts" });
-    this.addToCartByproductName = this.page.locator('.choose > .nav > li > a').first();
-    //  "//p[text()='Men Tshirt']//parent::div//child::a");
+    this.addToCartByproductName = this.page.locator("//div[@class='single-products']/div/p[text()='Men Tshirt']//parent::div//child::a");
+    // Preview in product details page: this.addToCartByproductName = this.page.locator('.choose > .nav > li > a').first();
     this.addedToCartMessage = this.page.getByText(
       "Your product has been added to cart."
     );

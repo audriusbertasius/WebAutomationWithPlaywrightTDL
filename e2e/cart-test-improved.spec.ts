@@ -20,8 +20,8 @@ test.describe("Cart add in and checkout flow with a successful purchase", async 
     await productsPage.selectMenCategory();
     await productsPage.filterProductsByTshirts();
     await productsPage.verifyMenTshirtsProductCategoryHeading();
-    await productsPage.addToCartByProductName();
-    await productDetailsPage.addToCart();
+    await productsPage.addToCartByProductName(); //add straight to cart
+    //await productDetailsPage.addToCart();
     await productsPage.verifyMessageProductAddedToTheCart();
     await productsPage.goToViewCart();
     
